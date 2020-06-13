@@ -128,10 +128,14 @@ public class Pathfinder : MonoBehaviour
 
     public List<Waypoint> GetPathList()
     {
-        LoadBlocks();
-        PaintEntryExitPoints();
-        BreadthFirstSearch(endWaypoint);
-        AddToPathList(endWaypoint);
+        if (path.Count == 0)
+        {
+            LoadBlocks();
+            PaintEntryExitPoints();
+            BreadthFirstSearch(endWaypoint);
+            AddToPathList(endWaypoint);
+        }
+
         return path;
     }
 }
