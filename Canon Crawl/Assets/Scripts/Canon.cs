@@ -7,25 +7,56 @@ public class Canon : MonoBehaviour
 {
 
     [SerializeField] Transform objectToPan;
-    [SerializeField] Transform targetEnemy;
     [SerializeField] float fireRadius = 21f;
     [SerializeField] ParticleSystem cannonballs;
 
+    Transform targetEnemy;
 
 
     // Update is called once per frame
     void Update()
     {
-        TargetEnemy();
+        SetTargetEnemy();
+        AimAtEnemy();
         Fire();
     }
 
-    private void TargetEnemy()
+    private void SetTargetEnemy()
+    {
+        var sceneEnemies = FindObjectsOfType<EnemyHealth>();
+
+        if (sceneEnemies.Length == 0) { return; }
+
+        Transform closestEnemy = sceneEnemies[0].transform;
+
+        foreach (EnemyHealth testEnemy in sceneEnemies)
+        {
+            closestEnemy = GetClosest(closestEnemy, testEnemy.transform);
+        }
+
+        targetEnemy = closestEnemy;
+    }
+
+    private void AimAtEnemy()
     {
         if (targetEnemy)
         {
             objectToPan.LookAt(targetEnemy);
         }
+    }
+
+    private Transform GetClosest(Transform closestEnemy, Transform testTransform)
+    {
+        float distanceToClosest = Vector3.Distance(closestEnemy.position, transform.position);
+        float distanceToTest = Vector3.Distance(testTransform.position, transform.position);
+
+        if (distanceToClosest > distanceToTest)
+        {
+            closestEnemy = testTransform;
+        }
+
+        return closestEnemy;
+
     }
 
     private void Fire()
@@ -37,8 +68,6 @@ public class Canon : MonoBehaviour
             cannonParticleEmissionModule.enabled = false;
             return;
         }
-
-        
 
         Vector3 enemyPos = targetEnemy.position;
         float enemyDistance = Vector3.Distance(enemyPos, transform.position);

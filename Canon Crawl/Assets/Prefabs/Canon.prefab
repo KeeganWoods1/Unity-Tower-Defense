@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8956440019765708006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.13, y: 2.2, z: 4.49}
+  m_LocalPosition: {x: 0.13, y: 1.76, z: 4.49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8959210070056661501}
@@ -168,7 +168,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 25.71
+      scalar: 80.4
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -284,7 +284,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2.26
+      scalar: 2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -860,12 +860,12 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
   EmissionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 4
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.5
+      scalar: 3
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -5272,7 +5272,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToPan: {fileID: 8959210070056661501}
-  targetEnemy: {fileID: 8904590529267238065, guid: 0ef8cf9d86b7b06419426743fa086f6f,
-    type: 3}
-  fireRadius: 21
+  fireRadius: 31
   cannonballs: {fileID: 1940585362137490133}
