@@ -10,19 +10,7 @@ public class Waypoint : MonoBehaviour
 
     public bool isVisited = false;
     [SerializeField]public Waypoint visitedFrom;
-
-    private void Update()
-    {
-        //CheckWaypointVisited();
-    }
-
-    private void CheckWaypointVisited()
-    {
-        if (isVisited)
-        {
-            SetTopColor(Color.cyan);
-        }
-    }
+    public bool isPlaceable = true;
 
     public int GetGridSize()
     {
@@ -37,9 +25,22 @@ public class Waypoint : MonoBehaviour
             );
     }
 
-    public void SetTopColor(Color color)
+    private void OnMouseOver()
     {
-        MeshRenderer topMeshRenderer = transform.Find("Top").GetComponent<MeshRenderer>();
-        topMeshRenderer.material.color = color;
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (isPlaceable)
+            {
+                FindObjectOfType<CanonFactory>().PlaceCanon(this);
+            }
+
+            else
+            {
+                print("Cant Place Here");
+            }
+ 
+        }
+        
     }
 }

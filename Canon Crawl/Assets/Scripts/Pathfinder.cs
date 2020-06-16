@@ -9,8 +9,9 @@ public class Pathfinder : MonoBehaviour
     Queue<Waypoint> queue = new Queue<Waypoint>();
     [SerializeField] List<Waypoint> path = new List<Waypoint>();
     [SerializeField] Waypoint startWaypoint, endWaypoint;
-    bool isRunning = true;
     Waypoint searchCenter;
+    bool isRunning = true;
+
 
     Vector2Int[] directions =
     {
@@ -38,13 +39,18 @@ public class Pathfinder : MonoBehaviour
         if (waypoint.Equals(startWaypoint))
         {
             path.Add(startWaypoint);
+            waypoint.isPlaceable = false;
+
             path.Reverse();
             return;
         }
 
         else
         {
+            
             path.Add(waypoint);
+            waypoint.isPlaceable = false;
+
             AddToPathList(waypoint.visitedFrom);
         }
     }
@@ -73,14 +79,7 @@ public class Pathfinder : MonoBehaviour
         else
         {
             grid.Add(gridPos, waypoint);
-
         }
-    }
-
-    private void PaintEntryExitPoints()
-    {
-        startWaypoint.SetTopColor(Color.blue);
-        endWaypoint.SetTopColor(Color.red);
     }
 
     private void HaltIfEndFound()
@@ -92,7 +91,6 @@ public class Pathfinder : MonoBehaviour
                 isRunning = false;
                 return;
             }
-
     }
 
     private void ExploreNeighbours()
@@ -131,7 +129,6 @@ public class Pathfinder : MonoBehaviour
         if (path.Count == 0)
         {
             LoadBlocks();
-            PaintEntryExitPoints();
             BreadthFirstSearch(endWaypoint);
             AddToPathList(endWaypoint);
         }

@@ -11,6 +11,7 @@ public class Canon : MonoBehaviour
     [SerializeField] ParticleSystem cannonballs;
 
     Transform targetEnemy;
+    Waypoint baseWaypoint;
 
 
     // Update is called once per frame
@@ -19,6 +20,16 @@ public class Canon : MonoBehaviour
         SetTargetEnemy();
         AimAtEnemy();
         Fire();
+    }
+
+    public Waypoint GetBaseWaypoint()
+    {
+        return baseWaypoint;
+    }
+
+    public void SetBaseWaypoint(Waypoint waypoint)
+    {
+        baseWaypoint = waypoint;
     }
 
     private void SetTargetEnemy()

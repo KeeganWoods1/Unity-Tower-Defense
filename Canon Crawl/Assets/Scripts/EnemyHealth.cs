@@ -5,6 +5,9 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] int hitPoints = 10;
+    [SerializeField] ParticleSystem hitFX;
+    [SerializeField] ParticleSystem deathFX;
+    [SerializeField] Transform parent;
 
 
     // Start is called before the first frame update
@@ -13,20 +16,24 @@ public class EnemyHealth : MonoBehaviour
         AddNonTriggerBoxCollider();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnParticleCollision(GameObject other)
     {
+        hitFX.Play();
         hitPoints--;
 
         if(hitPoints <= 0)
         {
-            Destroy(gameObject);
+            DeathSequence(deathFX);
         }
+    }
+
+    public void DeathSequence(ParticleSystem deathFX)
+    {
+        var vfx = Instantiate(deathFX, transform.position, Quaternion.identity);
+        vfx.Play();
+        Destroy(vfx.gameObject, vfx.main.duration);
+
+        Destroy(gameObject);
     }
 
     private void AddNonTriggerBoxCollider()
