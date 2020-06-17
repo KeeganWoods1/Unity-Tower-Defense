@@ -41,9 +41,10 @@ public class CanonFactory : MonoBehaviour
         var oldWaypoint = oldestCanon.GetBaseWaypoint();
 
         oldestCanon.transform.position = newWaypoint.transform.position;
+        newWaypoint.isPlaceable = false;
         oldestCanon.SetBaseWaypoint(newWaypoint);
         oldWaypoint.isPlaceable = true;
-
+        
         canonQueue.Enqueue(oldestCanon);
     }
 }

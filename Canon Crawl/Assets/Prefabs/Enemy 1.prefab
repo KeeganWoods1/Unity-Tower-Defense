@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 874e0f62f5ebf7943a90e00508e736e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 10
+  movementSpeed: 15
   selfDestructFX: {fileID: 198537984209914932, guid: fde5f9a35b1e8084685e4389f81956cf,
     type: 3}
 --- !u!54 &1866890158
@@ -110,10 +110,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a7ce18569a68204ca602c814ea031b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 20
+  hitPoints: 30
   hitFX: {fileID: 5937708259752126659}
   deathFX: {fileID: 198537984209914932, guid: 1a51bfda454239a41afb7dee687c6ac0, type: 3}
   parent: {fileID: 8614434494176523815}
+  enemyHitSFX: {fileID: 8300000, guid: 5e7e4021d07a323418b1e5d8c00f9dc1, type: 3}
+  enemyDeathSFX: {fileID: 8300000, guid: 00ca6c721dca93f498ab68c56a237d82, type: 3}
 --- !u!95 &7753133784980892493
 Animator:
   serializedVersion: 3

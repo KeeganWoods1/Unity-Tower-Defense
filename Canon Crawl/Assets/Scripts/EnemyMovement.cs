@@ -7,9 +7,10 @@ public class EnemyMovement : MonoBehaviour
 {
     Pathfinder pathfinder;
     List<Waypoint> path; 
-    [Range(0,10f)][SerializeField] float movementSpeed;
+    [Range(0,30f)][SerializeField] float movementSpeed;
     [SerializeField] ParticleSystem selfDestructFX;
     EnemyHealth enemy;
+    BaseHealth blueBase;
     int pathIndex = 0;
 
     // Start is called before the first frame update
@@ -18,6 +19,7 @@ public class EnemyMovement : MonoBehaviour
         pathfinder = FindObjectOfType<Pathfinder>();
         path = pathfinder.GetPathList();
         enemy = gameObject.GetComponent<EnemyHealth>();
+        blueBase = FindObjectOfType<BaseHealth>();
     }
 
     // Update is called once per frame
@@ -58,6 +60,7 @@ public class EnemyMovement : MonoBehaviour
 
             else
             {
+                blueBase.TakeDamage();
                 enemy.DeathSequence(selfDestructFX);
             }            
         }
