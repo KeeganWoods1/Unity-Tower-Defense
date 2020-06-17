@@ -38,6 +38,8 @@ public class BaseHealth : MonoBehaviour
 
     private void BaseExplosionSequence()
     {
+        scoreboard.isVictory = false;
+
         gameObject.GetComponent<AudioSource>().PlayOneShot(baseExplosionSFX);
         firstExplosionFX.Play();
         secondExplosionFX.Play();

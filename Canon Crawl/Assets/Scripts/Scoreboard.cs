@@ -13,6 +13,8 @@ public class Scoreboard : MonoBehaviour
     int numOfEnemies = 0;
     int points = 0;
     int baseHP = 10;
+    public bool enemiesStillSpawning;
+    public bool isVictory = true;
 
     private void Start()
     {
@@ -62,7 +64,7 @@ public class Scoreboard : MonoBehaviour
 
     public void DisplayWinText()
     {
-        if (numOfEnemies <= 0)
+        if (numOfEnemies <= 0 && !enemiesStillSpawning && isVictory)
         {
             winText.enabled = true;
             Invoke("ReloadScene", 2f);
